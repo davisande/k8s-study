@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: goserver
+  labels:
+    app: goserver
+spec:
+  replicas: 2
+  selector:
+    app: goserver
+  template:
+    metadata:
+      name: goserver
+      labels:
+        app: goserver
+    spec:
+      containers:
+        - name: goserver
+          image: davisande/hello-go
+          ports:
+            - containerPort: 80

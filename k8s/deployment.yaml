@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
   name: goserver
   labels:
@@ -18,5 +18,9 @@ spec:
       containers:
         - name: goserver
           image: davisande/hello-go
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
           ports:
             - containerPort: 80

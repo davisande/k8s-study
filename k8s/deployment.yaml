@@ -17,10 +17,15 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: davisande/hello-go
+          image: davisande/hello-go:v2
           resources:
             limits:
               memory: "128Mi"
               cpu: "100m"
           ports:
             - containerPort: 80
+          env:
+            - name: NAME
+              value: "Davi"
+            - name: AGE
+              value: "41"

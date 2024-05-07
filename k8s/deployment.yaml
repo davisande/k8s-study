@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: davisande/hello-go:v3
+          image: davisande/hello-go:v4
           resources:
             limits:
               memory: "128Mi"
@@ -27,6 +27,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: goserver-env
+            - secretRef:
+                name: goserver-secret
           volumeMounts:
             - mountPath: "/go/config"
               name: config

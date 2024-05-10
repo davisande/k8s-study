@@ -18,6 +18,13 @@ spec:
       containers:
         - name: goserver
           image: davisande/hello-go:v5.1
+          resources:
+            requests:
+              cpu: 300m
+              memory: 20Mi
+            limits:
+              cpu: 500m
+              memory: 25Mi
           startupProbe:
             httpGet:
               path: /healthz
@@ -40,10 +47,6 @@ spec:
             failureThreshold: 1
             timeoutSeconds: 1
             successThreshold: 1
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "100m"
           ports:
             - containerPort: 80
           envFrom:
